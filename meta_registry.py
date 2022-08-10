@@ -6,7 +6,7 @@ from maltego_trx.decorator_registry import (
     TRANSFORMS_CSV_HEADER,
     SETTINGS_CSV_HEADER,
 )
-from maltego_trx.protocol.mtz import create_local_server_xml
+from maltego_trx.mtz import create_local_server_xml
 from maltego_trx.utils import export_as_csv, serialize_xml
 
 
