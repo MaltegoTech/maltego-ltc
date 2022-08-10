@@ -1,11 +1,8 @@
-from maltego_trx.decorator_registry import TransformRegistry
+from meta_registry import MetaRegistry
+from modules.cisa.extensions import cisa_registry
 
-registry = TransformRegistry(
-        owner="ACME Corporation",
-        author="John Doe <johndoe@acme.com>",
-        host_url="https://transforms.acme.com",
-        seed_ids=["demo"]
-)
+registry = MetaRegistry()
+registry.include_registry("cisa", cisa_registry)
 
 # The rest of these attributes are optional
 

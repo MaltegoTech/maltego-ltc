@@ -1,0 +1,3 @@
+Owner,Author,Disclaimer,Description,Version,Name,UIName,URL,entityName,oAuthSettingId,transformSettingIDs,seedIDs
+Maltego Technologies GmbH,Carlos Fragoso <cf@maltego.com>,,Retrieves CVEs know to CISA.,0.1,cisacheckcve,CISA Check CVE Person,https://localhost:8080/run/cisacheckcve,maltego.Phrase,,,cisa
+Maltego Technologies GmbH,Carlos Fragoso <cf@maltego.com>,,Retrieves CVEs know to CISA.,0.1,cisacheckcve,CISA Check CVE Person,https://localhost:8080/run/cisacheckcve,maltego.Phrase,,,cisa
