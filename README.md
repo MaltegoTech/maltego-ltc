@@ -5,7 +5,6 @@
 ```
 git clone https://dw@dev.azure.com/MaltegoTech/support/_git/maltego-ltc
 cd maltego-ltc
-git checkout fix/cisa-layout
 ```
 
 4. Install dependencies in virtualenv
