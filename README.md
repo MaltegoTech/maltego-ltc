@@ -16,7 +16,9 @@ pip install -r requirements.txt
 
 5. Update the path in the Config file
 
-`python3 project.py list`
+```shell
+python3 project.py list
+```
 
 6. Import the Maltego Config file `local.mtz` into Maltego.
 
@@ -35,3 +37,10 @@ modules
 ```
 
 You can optionally specify a `whitelist` or `blacklist` in `project.py`. To disable them set them to `None`
+
+
+## Create a module
+
+```shell
+python3 create_module.py my_module me@myself.com "Me Inc."
+```
