@@ -6,3 +6,5 @@ Maltego Technologies GmbH,Florian Murschetz <fm@maltego.com>,,Retrieves email ad
 Maltego Technologies GmbH,Florian Murschetz <fm@maltego.com>,,Retrieves Filename IOCs from Website,0.1,websitetoiocsfile,Filename from Website [IoC-Parser],https://localhost:8080/run/websitetoiocsfile,maltego.URL,,,iocparser
 Maltego Technologies GmbH,Florian Murschetz <fm@maltego.com>,,"Retrieves Hash(md5,sha1,sha256) IOCs from Website",0.1,websitetoiocshash,Hashes from Website [IoC-Parser],https://localhost:8080/run/websitetoiocshash,maltego.URL,,,iocparser
 Maltego Technologies GmbH,Florian Murschetz <fm@maltego.com>,,Retrieves IPv4/v6 IOCs from Website,0.1,websitetoiocsipaddresses,IPs from Website [IoC-Parser],https://localhost:8080/run/websitetoiocsipaddresses,maltego.URL,,,iocparser
+fhe@maltego.com,Maltego Technologies GmbH,,Returns a Phrase greeting a Person on the Graph.,0.1,greetperson,Greet Person,https://localhost:8080/run/greetperson,maltego.Phrase,,,cms_seek
+fhe@maltego.com,Maltego Technologies GmbH,,Runs CMSeeK for a given URL and returns CMS name and url,0.1,urltocms,UrlToCms,https://localhost:8080/run/urltocms,maltego.URL,,,cms_seek
