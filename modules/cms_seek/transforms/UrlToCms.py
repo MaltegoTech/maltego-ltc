@@ -7,12 +7,11 @@ from ..utils.cmseek_service import CMSeekService, CMSeekResult, WordPressCMSeekR
 
 from modules.cms_seek.extensions import cms_seek_registry, cms_seek_set
 
+
 @cms_seek_registry.register_transform(display_name="UrlToCms", input_entity="maltego.URL",
-                                   description='Runs CMSeeK for a given URL and returns CMS name and url',
-                                   output_entities=["maltego.Phrase"],
-                                   transform_set=cms_seek_set)
-
-
+                                      description='Runs CMSeeK for a given URL and returns CMS name and url',
+                                      output_entities=["maltego.Phrase"],
+                                      transform_set=cms_seek_set)
 class UrlToCms(DiscoverableTransform):
     """
     Runs CMSeeK for a given URL and returns CMS name and url

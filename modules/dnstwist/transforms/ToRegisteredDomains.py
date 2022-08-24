@@ -7,6 +7,7 @@ import json
 
 from modules.dnstwist.extensions import dnstwist_registry, dnstwist_set
 
+
 def dns_twister(domain):
     data = dnstwist.run(domain=domain, registered=True, format='null')
     parsed_list = json.dumps(data, indent=4, sort_keys=True)
@@ -14,13 +15,11 @@ def dns_twister(domain):
 
     return parsed_json
 
+
 @dnstwist_registry.register_transform(display_name="To Domains [DNSTwist]", input_entity="maltego.Domain",
                                       description='Searches for Cybersquatting Domains',
                                       output_entities=["maltego.WebTitle"],
                                       transform_set=dnstwist_set)
-
-
-
 class ToRegisteredDomains(DiscoverableTransform):
     """
     Adds a note with the translation
@@ -31,7 +30,6 @@ class ToRegisteredDomains(DiscoverableTransform):
 
         orig_string = request.Value
         results = dns_twister(orig_string)
-
 
         for domain in results:
             if domain['domain']:
