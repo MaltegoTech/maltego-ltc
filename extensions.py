@@ -1,10 +1,12 @@
 from meta_registry import MetaRegistry
-from modules.cisa.extensions import cisa_registry
 from modules.IOCparser.extensions import iocparser_registry
+from modules.cisa.extensions import cisa_registry
+from modules.cms_seek.extensions import cms_seek_registry
 
 registry = MetaRegistry()
 registry.include_registry("cisa", cisa_registry)
 registry.include_registry("iocparser", iocparser_registry)
+registry.include_registry("cms_seek", cms_seek_registry)
 
 # The rest of these attributes are optional
 
