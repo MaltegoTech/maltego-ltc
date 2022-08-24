@@ -40,7 +40,40 @@ You can optionally specify a `whitelist` or `blacklist` in `project.py`. To disa
 
 
 ## Create a module
+To create a module 
+
+1. use the python script `create_module.py`. The script needs following positional arguments: name author owner.
+
+```shell
+usage: create_module.py [-h] name author owner
+
+positional arguments:
+  name        The module name
+  author      your email address, alias or Fullname
+  owner       You, or the organization you write this module for
+```
+
+e.g.
 
 ```shell
 python3 create_module.py my_module me@myself.com "Me Inc."
 ```
+
+2. Edit in the top-level of the `extensions.py` file and add following lines:   
+```
+from modules.{name}.extensions import {name}_registry
+
+registry.include_registry("{name}", {name}_registry
+```
+
+e.g. name = 'cisa'
+
+```
+from meta_registry import MetaRegistry
+from modules.cisa.extensions import cisa_registry
+
+registry = MetaRegistry()
+registry.include_registry("cisa", cisa_registry)
+```
+
+
