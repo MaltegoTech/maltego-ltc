@@ -1,4 +1,4 @@
 maltego-trx~=1.6.0
 requests==2.28.1
 cachetools~=5.2.0
-dnstwist
+-r modules/dnstwist/requirements.txt
