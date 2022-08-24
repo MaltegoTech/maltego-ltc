@@ -9,8 +9,8 @@ from ..utils import iocapi
 
 #print(getIOC("https://blog.talosintelligence.com/2020/10/lemon-duck-brings-cryptocurrency-miners.html","URL"))
 
-@registry.register_transform(display_name="To Filename on Website [IoC-Parser]", input_entity="maltego.URL",
-                             description='Retrieves Filename IOCs from Website',
+@registry.register_transform(display_name="To TTP on Website [IoC-Parser]", input_entity="maltego.URL",
+                             description='Retrieves Behavioural Indicators (TTPs ) from a Website',
                              output_entities=["maltego.Filename"],
                              transform_set=IoCparser)
 class WebsiteToIoCsFile(DiscoverableTransform):
@@ -19,8 +19,7 @@ class WebsiteToIoCsFile(DiscoverableTransform):
         website = request.Value
         iocs = iocapi.getIOC(website)
         if iocs:
-            for key in iocs['data']:
-                    for filename in iocs['data']['FILE_NAME']:
-                        response.addEntity("maltego.Filename", filename)
+            for tactic in iocs['data']['MITRE_ATT&CK']:
+                response.addEntity("misp.AttackTechnique", tactic)
         else:
             response.addUIMessage("No indicator found on Website", UIM_INFORM)
