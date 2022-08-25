@@ -13,7 +13,7 @@ from ..utils import iocapi
                              description='Retrieves Behavioural Indicators (TTPs ) from a Website',
                              output_entities=["maltego.Filename"],
                              transform_set=IoCparser)
-class WebsiteToIoCsFile(DiscoverableTransform):
+class WebsiteToIoCsTTP(DiscoverableTransform):
     @classmethod
     def create_entities(cls,request: MaltegoMsg, response: MaltegoTransform):
         website = request.Value
