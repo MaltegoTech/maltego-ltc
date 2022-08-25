@@ -3,3 +3,4 @@ requests==2.28.1
 cachetools~=5.2.0
 -r modules/dnstwist/requirements.txt
 -r modules/IOCparser/requirements.txt
+-r modules/holehe/requirements.txt
