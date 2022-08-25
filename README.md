@@ -3,7 +3,7 @@
 1. Install Python 3.7 or newer
 2. Clone LTC to a local folder and change into the path 
 ```
-git clone https://dw@dev.azure.com/MaltegoTech/support/_git/maltego-ltc
+git clone https://MaltegoTech@dev.azure.com/MaltegoTech/support/_git/maltego-ltc
 cd maltego-ltc
 ```
 
