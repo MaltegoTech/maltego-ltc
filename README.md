@@ -14,6 +14,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+
 5. Update the path in the Config file
 
 ```shell
