@@ -33,6 +33,7 @@ registry.write_transforms_config()
 registry.write_settings_config()
 
 registry.write_local_mtz(command="./venv/bin/python3")
+registry.write_module_mtzs(command="./venv/bin/python3")
 
 if __name__ == "__main__":
     handle_run(__name__, sys.argv, application)

@@ -1,3 +1,5 @@
+import logging
+import os.path
 import zipfile
 from itertools import chain
 
@@ -20,7 +22,7 @@ class MetaRegistry:
         self.registries[namespace] = registry
 
     def write_transforms_config(
-        self, config_path: str = "./transforms.csv", csv_line_limit: int = 100
+            self, config_path: str = "./transforms.csv", csv_line_limit: int = 100
     ):
         csv_lines = chain.from_iterable(
             registry._create_transforms_config()
@@ -32,7 +34,7 @@ class MetaRegistry:
         )
 
     def write_settings_config(
-        self, config_path: str = "./settings.csv", csv_line_limit: int = 100
+            self, config_path: str = "./settings.csv", csv_line_limit: int = 100
     ):
         """Exports the collected settings metadata as a csv-file to config_path"""
 
@@ -45,12 +47,12 @@ class MetaRegistry:
         )
 
     def write_local_mtz(
-        self,
-        mtz_path: str = "./local.mtz",
-        working_dir: str = ".",
-        command: str = "python3",
-        params: str = "project.py",
-        debug: bool = True,
+            self,
+            mtz_path: str = "./local.mtz",
+            working_dir: str = ".",
+            command: str = "python3",
+            params: str = "project.py",
+            debug: bool = True,
     ):
         transform_meta_names = chain.from_iterable(
             registry.transform_metas.keys() for registry in self.registries.values()
@@ -71,3 +73,27 @@ class MetaRegistry:
                     continue
 
                 mtz.writestr(path, content)
+
+    def write_module_mtzs(
+            self,
+            working_dir: str = ".",
+            command: str = "python3",
+            params: str = "project.py",
+            debug: bool = True,
+    ):
+        for namespace, registry in self.registries.items():
+            module_path = os.path.join(".", "modules", namespace)
+            if not os.path.exists(module_path):
+                logging.error("Please call your registry namespace the same as the module directory to have the mtz "
+                              "in the module directory. Instead it will be written to the top level")
+
+                module_path = "."
+
+            module_mtz_path = os.path.join(module_path, f"{namespace}.local.mtz")
+            registry.write_local_mtz(
+                module_mtz_path,
+                working_dir,
+                command,
+                params,
+                debug
+            )
