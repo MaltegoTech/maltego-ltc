@@ -1,7 +1,7 @@
 from maltego_trx.entities import Phrase, URL, Alias
 from maltego_trx.maltego import MaltegoMsg, MaltegoTransform
 from maltego_trx.transform import DiscoverableTransform
-from parser import ParserError
+# from parser import ParserError
 
 from ..utils.cmseek_service import CMSeekService, CMSeekResult, WordPressCMSeekResult
 
@@ -23,7 +23,7 @@ class UrlToCms(DiscoverableTransform):
 
         try:
             cmseek_result: CMSeekResult = CMSeekService.run(url)
-        except ParserError as e:
+        except ValueError as e:
             response.addException(str(e))
             return
 

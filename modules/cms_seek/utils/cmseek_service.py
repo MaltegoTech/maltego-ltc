@@ -7,7 +7,7 @@ from pprint import pprint
 from typing import TypedDict, Optional, List, Union
 from urllib.parse import ParseResult
 
-from parser import ParserError
+# from parser import ParserError
 
 from ..config import BASE_DIR, read_config_file
 
@@ -45,7 +45,7 @@ class CMSeekService:
 
         # if the hostname is "", it couldn't be parsed
         if parsed_url.hostname == "":
-            raise ParserError(f"Could not parse url '{url}'")
+            raise ValueError(f"Could not parse url '{url}'")
 
         # CMSeeK command for a single url
         cmd = f"{sys.executable} cmseek.py --follow-redirect --batch -u {parsed_url.hostname}"
