@@ -1,15 +1,15 @@
 from nmap3.nmapparser import NmapCommandParser
 
 COMMANDS = {
-    # target can be subnet or DNS name or IP
+    # target can be subnet or DNS name or IP | Done
     "{target} --top-ports {top_ports_scan_number}": NmapCommandParser(None).filter_top_ports,
-    # target should be a subnet | List scan
+    # target should be a subnet | List scan | Done
     "{target} -sL": NmapCommandParser(None).filter_top_ports,
-    # target should be a DNS name or IP | OS detection
+    # target should be a DNS name or IP | OS detection | Done
     "{target} -O": NmapCommandParser(None).filter_top_ports,
-    # target should be a DNS name, IP or subnet | All ports scan
+    # target should be a DNS name, IP or subnet | All ports scan | Done
     "{target} -p-": NmapCommandParser(None).filter_top_ports,
-    # target should be DNS name or IP
+    # target should be DNS name or IP | Probe open ports to determine service | Done
     "{target} -sV": NmapCommandParser(None).filter_top_ports,
     # target should be an IP or DNS name | FIN scan (sending FIN TCP packet)
     "{target} -sF": NmapCommandParser(None).filter_top_ports,
