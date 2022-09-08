@@ -62,7 +62,12 @@ def parse_properties(properties: dict, ip: str, response: MaltegoTransform, dns_
     for p in ports:
         name = f'{p["protocol"]}/{p["portid"]}'
         if 'service' in p and 'name' in p['service']:
-            service_name = p['service']['name']
+            service_name = f"{p['service']['name']}"
+            if 'product' in p['service']:
+                service_name += f" |\nproduct:{p['service']['product']}"
+            if 'servicefp' in p['service']:
+                service_name += f" |\nservice_footprint:{p['service']['servicefp']}>"
+
         else:
             service_name = 'unknown'
         ent.addProperty(name, name, "loose", service_name)

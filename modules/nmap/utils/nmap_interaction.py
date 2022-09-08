@@ -184,8 +184,8 @@ if __name__ == '__main__':
     # command = CMD.format(target="192.168.1.38")
     # parsing_func = COMMANDS[CMD]
 
-    CMD = "{target} -p-"
-    command = CMD.format(target="192.168.1.0/24")
+    CMD = "{target} -sV"
+    command = CMD.format(target="192.168.1.39")
     parsing_func = COMMANDS[CMD]
 
     ee = NmapOrchestrator.execute_command(cmd=command, parsing_function=parsing_func)
