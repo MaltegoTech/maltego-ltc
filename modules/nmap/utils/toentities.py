@@ -2,6 +2,7 @@ import logging
 
 from maltego_trx.entities import Phrase, DNS, IPAddress
 from maltego_trx.maltego import MaltegoMsg, MaltegoTransform
+from maltego_trx.overlays import OverlayType, OverlayPosition
 
 log = logging.getLogger(__name__)
 
@@ -51,11 +52,15 @@ def parse_properties(properties: dict, ip: str, response: MaltegoTransform, dns_
             if state["state"] == "unknown" or state["state"] == "down":
                 return
 
+
     if dns_name:
         ent = response.addEntity(DNS, dns_name)
         ent.addProperty("ipv4", "ipv4", "loose", ip)
     else:
         ent = response.addEntity(IPAddress, ip)
+
+    # let's add an overlay to signal that the IP is up
+    ent.addOverlay(propertyName='#00db3b', position=OverlayPosition.NORTH_WEST, overlayType=OverlayType.COLOUR)
 
     # ports
     # TODO add a Transform to get the ports out of an Entity
