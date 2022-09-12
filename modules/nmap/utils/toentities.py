@@ -82,6 +82,8 @@ def parse_properties(properties: dict, ip: str, response: MaltegoTransform, dns_
     if macaddress is not None:
         # ent.addProperty("mac_address", "mac_address", "loose", macaddress[0]['addr'])
         ent.addProperty("mac_address", "mac_address", "loose", macaddress['addr'])
+        if "vendor" in macaddress:
+            ent.addProperty("mac_address_vendor", "mac_address_vendor", "loose", macaddress['vendor'])
 
     # OS match
     if osmatch:
