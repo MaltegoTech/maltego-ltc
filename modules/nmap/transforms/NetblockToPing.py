@@ -17,7 +17,7 @@ config_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "con
                                   output_entities=[IPAddress],
                                   transform_set=nmap_set)
 class NetblockToPing(DiscoverableTransform):
-    # TODO
+    # TODO TEST
     CMD = "{target} -sP"
     @classmethod
     def create_entities(cls, request: MaltegoMsg, response: MaltegoTransform):
