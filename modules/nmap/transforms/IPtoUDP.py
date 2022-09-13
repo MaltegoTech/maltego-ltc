@@ -18,7 +18,6 @@ config_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "con
                                   output_entities=[IPAddress],
                                   transform_set=nmap_set)
 class IPtoUDP(DiscoverableTransform):
-    # TODO TESTED
     CMD = "{target} -sU"
     @classmethod
     def create_entities(cls, request: MaltegoMsg, response: MaltegoTransform):

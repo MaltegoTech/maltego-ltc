@@ -18,7 +18,6 @@ config_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "con
                                   output_entities=[DNS],
                                   transform_set=nmap_set)
 class DNSnameToFIN(DiscoverableTransform):
-    # TODO TESTED
     CMD = "{target} -sF"
 
     @classmethod

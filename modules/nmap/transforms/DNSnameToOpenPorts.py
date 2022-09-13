@@ -12,13 +12,11 @@ from modules.nmap.config import TOP_PORT_SCAN_NUMBER
 
 config_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.py")
 
-# TODO check that the name of every Transforms using nmap actually states the command used
 @nmap_registry.register_transform(display_name="To Open Ports (-sV)", input_entity=DNS,
                                   description=f'Probe open ports to determine service/version info. Command: "-sV"',
                                   output_entities=[DNS],
                                   transform_set=nmap_set)
 class DNSnameToOpenPorts(DiscoverableTransform):
-    # TODO
     CMD = "{target} -sV"
 
     @classmethod

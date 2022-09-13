@@ -19,7 +19,6 @@ config_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "con
                                   output_entities=[DNS],
                                   transform_set=nmap_set)
 class DNSnameToOSDetection(DiscoverableTransform):
-    # TODO TESTED
     CMD = "{target} -O"
 
     @classmethod
