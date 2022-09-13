@@ -52,7 +52,6 @@ def parse_properties(properties: dict, ip: str, response: MaltegoTransform, dns_
             if state["state"] == "unknown" or state["state"] == "down":
                 return
 
-
     if dns_name:
         ent = response.addEntity(DNS, dns_name)
         ent.addProperty("ipv4", "ipv4", "loose", ip)
@@ -63,18 +62,20 @@ def parse_properties(properties: dict, ip: str, response: MaltegoTransform, dns_
     ent.addOverlay(propertyName='#00db3b', position=OverlayPosition.NORTH_WEST, overlayType=OverlayType.COLOUR)
 
     # ports
-    # TODO add a Transform to get the ports out of an Entity
     for p in ports:
-        name = f'{p["protocol"]}/{p["portid"]}'
-        if 'service' in p and 'name' in p['service']:
-            service_name = f"{p['service']['name']}"
+        name = f'{p["protocol"].lower()}/{p["portid"]}'
+        if 'service' in p:
+            service_name = ""
+            if 'name' in p['service']:
+                service_name = f"{p['service']['name']}"
+            service_name += "\n"
             if 'product' in p['service']:
-                service_name += f" |\nproduct:{p['service']['product']}"
+                service_name += f"product:{p['service']['product']}"
+            service_name += "\n"
             if 'servicefp' in p['service']:
-                service_name += f" |\nservice_footprint:{p['service']['servicefp']}>"
-
+                service_name += f"service_footprint:{p['service']['servicefp']}"
         else:
-            service_name = 'unknown'
+            service_name = 'unknown\n\n'
         ent.addProperty(name, name, "loose", service_name)
 
     # hostname
