@@ -6,12 +6,25 @@ import datetime
 import subprocess
 from xml.etree import ElementTree as ET
 
+import nmap3
+
 from modules.nmap.config import CACHE_DIR, CACHE_SHELF_LIFE, NMAP_EXECUTABLE, SUDO
 
 log = logging.getLogger(__name__)
 
 
 class NmapOrchestrator:
+
+    NMAP_PATH = NMAP_EXECUTABLE
+
+    @classmethod
+    def get_nmap_path(cls):
+        if cls.NMAP_PATH == '':
+            cls.NMAP_PATH = nmap3.get_nmap_path()
+            if cls.NMAP_PATH == '':
+                raise Exception("Couldn't find nmap path, please install it: https://nmap.org/")
+        return cls.NMAP_PATH
+
     @classmethod
     def _run_command(cls, cmd, timeout=None):
         """
@@ -104,7 +117,8 @@ class NmapOrchestrator:
         """
         # TODO handle exception that could arise
         # TODO handle exception for lack of ROOT
-        cmd = SUDO + NMAP_EXECUTABLE + " " + cmd + " -oX -"
+        nmap_path = cls.get_nmap_path()
+        cmd = SUDO + nmap_path + " " + cmd + " -oX -"
         fp = cls._get_cached_file_path(cmd)
 
         cont = b""
@@ -135,57 +149,11 @@ class NmapOrchestrator:
 
 if __name__ == '__main__':
     import logging
-
     logging.basicConfig(level=logging.DEBUG)
-
-    # NmapOrchestrator._cache_output("dazdazdazda8888z", b"dadaadaz")
     from modules.nmap.utils.commands import COMMANDS
 
-    # CMD = "{target} --top-ports {top_ports_scan_number}"
-    # command = CMD.format(target="scanme.nmap.Org", top_ports_scan_number="100")
-    # command = "{target} --top-ports {top_ports_scan_number}".format(target="192.168.1.0/24",
-    #                                                                 top_ports_scan_number="100")
-    # parsing_func = COMMANDS[CMD]
-
-    # CMD = "{target} -sL"
-    # command = CMD.format(target="192.168.1.38")
-    # command = CMD.format(target="192.168.1.1/24")
-    # parsing_func = COMMANDS[CMD]
-
-    # CMD = "{target} -O"
-    # command = CMD.format(target="192.168.1.39")
-    # parsing_func = COMMANDS[CMD]
-
-    # CMD = "{target} -p-"
-    # command = CMD.format(target="192.168.1.0/24")
-    # parsing_func = COMMANDS[CMD]
-    #
-    # CMD = "{target} -sV"
-    # command = CMD.format(target="scanme.nmap.org")
-    # parsing_func = COMMANDS[CMD]
-    #
-    # CMD = "{target} -sF"
-    # command = CMD.format(target="scanme.nmap.Org")
-    # parsing_func = COMMANDS[CMD]
-    #
-    # CMD = "{target} -sP"
-    # command = CMD.format(target="192.168.1.0/24")
-    # parsing_func = COMMANDS[CMD]
-    #
-    # CMD = "{target} -sS"
-    # command = CMD.format(target="192.168.1.38")
-    # parsing_func = COMMANDS[CMD]
-    #
-    # CMD = "{target} -sU"
-    # command = CMD.format(target="192.168.1.38")
-    # parsing_func = COMMANDS[CMD]
-
-    # CMD = "{target} -sU"
-    # command = CMD.format(target="192.168.1.38")
-    # parsing_func = COMMANDS[CMD]
-
-    CMD = "{target} -sV"
-    command = CMD.format(target="192.168.1.39")
+    CMD = "{target} -PR"
+    command = CMD.format(target="192.168.1.0/24")
     parsing_func = COMMANDS[CMD]
 
     ee = NmapOrchestrator.execute_command(cmd=command, parsing_function=parsing_func)
@@ -197,5 +165,4 @@ if __name__ == '__main__':
     from modules.nmap.utils.toentities import parse_properties
 
     for key, properties in ee.items():
-        # parse_properties(properties=properties, ip=key, response="response", dns_name=dns_name)
         parse_properties(properties=properties, ip=key, response="response", dns_name="")

@@ -11,15 +11,15 @@ COMMANDS = {
     "{target} -p-": NmapCommandParser(None).filter_top_ports,
     # target should be DNS name or IP | Probe open ports to determine service | Done
     "{target} -sV": NmapCommandParser(None).filter_top_ports,
-    # target should be an IP or DNS name | FIN scan (sending FIN TCP packet)
+    # target should be an IP or DNS name | FIN scan (sending FIN TCP packet) | Done
     "{target} -sF": NmapCommandParser(None).filter_top_ports,
-    # target should be a DNS name, IP or subnet | Ping scan
+    # target should be a DNS name, IP or subnet | Ping scan | Done
     "{target} -sP": NmapCommandParser(None).filter_top_ports,
-    # target should be a DNS name, IP or subnet | Syn scan
+    # target should be a DNS name, IP or subnet | Syn scan | Done
     "{target} -sS": NmapCommandParser(None).filter_top_ports,
-    # target should be a DNS name, IP or subnet | UDP scan
+    # target should be a DNS name, IP or subnet | UDP scan | Done
     "{target} -sU": NmapCommandParser(None).filter_top_ports,
-    # target should be a DNS name, IP or subnet | ARP discovery
+    # target should be a DNS name, IP or subnet | ARP discovery | Done
     "{target} -PR": NmapCommandParser(None).filter_top_ports,
 }
 

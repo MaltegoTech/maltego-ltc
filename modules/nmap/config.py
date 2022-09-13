@@ -4,9 +4,6 @@ import nmap3
 # If the NMAP executable is not automatically found, you can override it here.
 NMAP_EXECUTABLE = ""
 
-if not NMAP_EXECUTABLE:
-    NMAP_EXECUTABLE = "nmap"
-
 # checking if we can run sudo commands
 if os.getuid() == 0:
     SUDO = "sudo "
