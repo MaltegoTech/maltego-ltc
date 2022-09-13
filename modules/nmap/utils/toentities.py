@@ -79,10 +79,10 @@ def parse_properties(properties: dict, ip: str, response: MaltegoTransform, dns_
         ent.addProperty(name, name, "loose", service_name)
 
     # hostname
-    # TODO change the value to be only the hostname, and add the type in the ket, so we can extract the DNS name / domain easily
     for i, h in enumerate(hostname):
         # in case there are several hostnames
-        ent.addProperty(f"hostname_{i}", f"hostname_{i}", "loose", f'{h["name"]} (Type: {h["type"]})')
+        # ent.addProperty(f"hostname_{i}", f"hostname_{i}", "loose", f'{h["name"]} (Type: {h["type"]})')
+        ent.addProperty(f"hostname_{i} ({h['type']})", f"hostname_{i} ({h['type']})", "loose", h["name"])
 
     # mac address
     if macaddress is not None:
