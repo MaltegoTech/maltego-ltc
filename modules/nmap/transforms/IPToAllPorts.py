@@ -12,13 +12,11 @@ from modules.nmap.config import TOP_PORT_SCAN_NUMBER
 
 config_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.py")
 
-# TODO check the description of all transforms
-@nmap_registry.register_transform(display_name="To All Ports", input_entity=IPAddress,
+@nmap_registry.register_transform(display_name="To All Ports (-p-)", input_entity=IPAddress,
                                   description=f'Scans for all ports from 1 to 65535. Command: "-p-"',
                                   output_entities=[IPAddress],
                                   transform_set=nmap_set)
 class IPToAllPorts(DiscoverableTransform):
-    # TODO TESTED
     CMD = "{target} -p-"
     @classmethod
     def create_entities(cls, request: MaltegoMsg, response: MaltegoTransform):
