@@ -13,13 +13,13 @@ from modules.nmap.config import TOP_PORT_SCAN_NUMBER
 config_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.py")
 
 
-@nmap_registry.register_transform(display_name="OS detection (-O)", input_entity=DNS,
+@nmap_registry.register_transform(display_name="OS detection (-O -A) ", input_entity=DNS,
                                   description=f'Attempts to detect the OS running on the target. Needs root access! + \
-                                                Command: "-O"',
+                                                Command: "-O -A"',
                                   output_entities=[DNS],
                                   transform_set=nmap_set)
 class DNSnameToOSDetection(DiscoverableTransform):
-    CMD = "{target} -O"
+    CMD = "{target} -O -A"
 
     @classmethod
     def create_entities(cls, request: MaltegoMsg, response: MaltegoTransform):

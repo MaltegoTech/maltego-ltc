@@ -13,12 +13,12 @@ from modules.nmap.config import TOP_PORT_SCAN_NUMBER
 config_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.py")
 
 
-@nmap_registry.register_transform(display_name="To Open Ports (-sV)", input_entity="maltego.CIDR",
-                                  description=f'Probe open ports to determine service/version info. Command: "-sV"',
+@nmap_registry.register_transform(display_name="To Open Ports (-sV -A)", input_entity="maltego.CIDR",
+                                  description=f'Probe open ports to determine service/version info. Command: "-sV -A"',
                                   output_entities=[IPAddress],
                                   transform_set=nmap_set)
 class NetblockToOpenPorts(DiscoverableTransform):
-    CMD = "{target} -sV"
+    CMD = "{target} -sV -A"
     @classmethod
     def create_entities(cls, request: MaltegoMsg, response: MaltegoTransform):
         netblock_cidr = request.Value

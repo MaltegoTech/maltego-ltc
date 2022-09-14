@@ -13,13 +13,13 @@ from modules.nmap.config import TOP_PORT_SCAN_NUMBER
 config_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.py")
 
 
-@nmap_registry.register_transform(display_name="To Top Ports (--top-ports)", input_entity=DNS,
+@nmap_registry.register_transform(display_name="To Top Ports (--top-ports -A)", input_entity=DNS,
                                   description=f'Scans for a selection of ports. The number of ports can be changed in '
-                                              f'{config_file_path}. Command: "--top-ports"',
+                                              f'{config_file_path}. Command: "--top-ports -A"',
                                   output_entities=[DNS],
                                   transform_set=nmap_set)
 class DNSnameToTopPorts(DiscoverableTransform):
-    CMD = "{target} --top-ports {top_ports_scan_number}"
+    CMD = "{target} --top-ports {top_ports_scan_number} -A"
     @classmethod
     def create_entities(cls, request: MaltegoMsg, response: MaltegoTransform):
         dnsname = request.Value

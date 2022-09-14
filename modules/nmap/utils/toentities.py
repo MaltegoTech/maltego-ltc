@@ -70,12 +70,18 @@ def parse_properties(properties: dict, ip: str, response: MaltegoTransform, dns_
                 service_name = f"{p['service']['name']}"
             service_name += "\n"
             if 'product' in p['service']:
-                service_name += f"product:{p['service']['product']}"
+                service_name += f"{p['service']['product']}"
             service_name += "\n"
             if 'servicefp' in p['service']:
-                service_name += f"service_footprint:{p['service']['servicefp']}"
+                service_name += f"{p['service']['servicefp']}"
+            service_name += "\n"
+            if 'version' in p['service']:
+                service_name += f"{p['service']['version']}"
+            service_name += "\n"
+            if 'extrainfo' in p['service']:
+                service_name += f"{p['service']['extrainfo']}"
         else:
-            service_name = 'unknown\n\n'
+            service_name = 'unknown\n\n\n\n'
         ent.addProperty(name, name, "loose", service_name)
 
     # hostname
