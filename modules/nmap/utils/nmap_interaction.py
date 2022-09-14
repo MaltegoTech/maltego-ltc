@@ -8,7 +8,7 @@ from xml.etree import ElementTree as ET
 
 import nmap3
 
-from modules.nmap.config import CACHE_DIR, CACHE_SHELF_LIFE, NMAP_EXECUTABLE, SUDO
+from modules.nmap.config import CACHE_DIR, CACHE_SHELF_LIFE, NMAP_EXECUTABLE, SUDO, SET_OF_PORTS_TO_SCAN, CONFIG_FILE_PATH
 
 log = logging.getLogger(__name__)
 
@@ -16,6 +16,25 @@ log = logging.getLogger(__name__)
 class NmapOrchestrator:
 
     NMAP_PATH = NMAP_EXECUTABLE
+
+    @classmethod
+    def get_formatted_ports(cls):
+        formatted_ports = ""
+        if SET_OF_PORTS_TO_SCAN["udp"]:
+            formatted_ports += f"U:{SET_OF_PORTS_TO_SCAN['udp']},"
+        if SET_OF_PORTS_TO_SCAN["tcp"]:
+            formatted_ports += f"T:{SET_OF_PORTS_TO_SCAN['tcp']},"
+        if SET_OF_PORTS_TO_SCAN["sctp"]:
+            formatted_ports += f"S:{SET_OF_PORTS_TO_SCAN['sctp']},"
+        if SET_OF_PORTS_TO_SCAN["ip_protocol"]:
+            formatted_ports += f"P:{SET_OF_PORTS_TO_SCAN['ip_protocol']},"
+
+        formatted_ports = formatted_ports.strip(",")
+
+        if not formatted_ports:
+            raise Exception(f"Not set of ports available, modify it at {CONFIG_FILE_PATH}")
+
+        return formatted_ports
 
     @classmethod
     def get_nmap_path(cls):
@@ -152,9 +171,12 @@ if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG)
     from modules.nmap.utils.commands import COMMANDS
 
-    CMD = "{target} -PR"
-    command = CMD.format(target="192.168.1.0/24")
+    CMD = "{target} -sU -A"
+    command = CMD.format(target="192.168.1.39")
+    # command = CMD.format(target="scanme.nmap.org")
     parsing_func = COMMANDS[CMD]
+
+    command += " -A"
 
     ee = NmapOrchestrator.execute_command(cmd=command, parsing_function=parsing_func)
 
