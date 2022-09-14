@@ -27,7 +27,7 @@ class DNSnameToServices(DiscoverableTransform):
         for key, val in request.Properties.items():
             if cls.service_reg.match(key):
                 protocol, port = key.split("/")
-                service_name, product, service_footprint = val.split('\n')
+                service_name, product, service_footprint, version, extrainfo = val.split('\n')
                 ent = response.addEntity(type="maltego.Service", value=service_name)
                 ent.addProperty(fieldName="port.number", displayName="Port", matchingRule="strict", value=port)
                 ent.addProperty(fieldName="protocol", displayName="protocol", matchingRule="strict",
@@ -38,3 +38,5 @@ class DNSnameToServices(DiscoverableTransform):
                 ent.addProperty(fieldName="banner.text", displayName="Service banner", matchingRule="strict", value="")
                 ent.addProperty(fieldName="service_footprint", displayName="service_footprint", matchingRule="strict",
                                 value=service_footprint)
+                ent.addProperty(fieldName="version", displayName="version", matchingRule="strict", value=version)
+                ent.addProperty(fieldName="extrainfo", displayName="extrainfo", matchingRule="strict", value=extrainfo)

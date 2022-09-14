@@ -12,12 +12,12 @@ from modules.nmap.config import TOP_PORT_SCAN_NUMBER
 
 config_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.py")
 
-@nmap_registry.register_transform(display_name="To SYN scan (-sS)", input_entity="maltego.CIDR",
-                                  description=f'Performs a SYN scan. Command: "-sS"',
+@nmap_registry.register_transform(display_name="To SYN scan (-sS -A)", input_entity="maltego.CIDR",
+                                  description=f'Performs a SYN scan. Command: "-sS -A"',
                                   output_entities=[IPAddress],
                                   transform_set=nmap_set)
 class NetblockToSYN(DiscoverableTransform):
-    CMD = "{target} -sS"
+    CMD = "{target} -sS -A"
     @classmethod
     def create_entities(cls, request: MaltegoMsg, response: MaltegoTransform):
         ipadd = request.Value

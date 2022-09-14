@@ -13,12 +13,12 @@ from modules.nmap.config import TOP_PORT_SCAN_NUMBER
 
 config_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.py")
 
-@nmap_registry.register_transform(display_name="To FIN scan (-sF)", input_entity=IPAddress,
-                                  description=f'Performs a TCP FIN scan. Command: "-sF"',
+@nmap_registry.register_transform(display_name="To FIN scan (-sF -A)", input_entity=IPAddress,
+                                  description=f'Performs a TCP FIN scan. Command: "-sF -A"',
                                   output_entities=[IPAddress],
                                   transform_set=nmap_set)
 class IPToFIN(DiscoverableTransform):
-    CMD = "{target} -sF"
+    CMD = "{target} -sF -A"
     @classmethod
     def create_entities(cls, request: MaltegoMsg, response: MaltegoTransform):
         ipadd = request.Value

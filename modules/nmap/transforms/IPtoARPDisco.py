@@ -12,12 +12,12 @@ from modules.nmap.config import TOP_PORT_SCAN_NUMBER
 
 config_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "config.py")
 
-@nmap_registry.register_transform(display_name="To ARP scan (-PR)", input_entity=IPAddress,
-                                  description=f'Performs an ARP scan. Command: "-PR"',
+@nmap_registry.register_transform(display_name="To ARP scan (-PR) -A", input_entity=IPAddress,
+                                  description=f'Performs an ARP scan. Command: "-PR -A"',
                                   output_entities=[IPAddress],
                                   transform_set=nmap_set)
 class IPtoARPDisco(DiscoverableTransform):
-    CMD = "{target} -PR"
+    CMD = "{target} -PR -A"
     @classmethod
     def create_entities(cls, request: MaltegoMsg, response: MaltegoTransform):
         ipadd = request.Value
