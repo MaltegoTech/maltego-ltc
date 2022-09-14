@@ -21,6 +21,8 @@ COMMANDS = {
     "{target} -sU -A": NmapCommandParser(None).filter_top_ports,
     # target should be a DNS name, IP or subnet | ARP discovery | Done
     "{target} -PR -A": NmapCommandParser(None).filter_top_ports,
+    # target should be a DNS name, IP or subnet | Scan set of ports | Done
+    "{target} -p {ports} -A": NmapCommandParser(None).filter_top_ports,
 }
 
 if __name__ == '__main__':
