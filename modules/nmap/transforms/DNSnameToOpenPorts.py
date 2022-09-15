@@ -24,5 +24,9 @@ class DNSnameToOpenPorts(DiscoverableTransform):
         dnsname = request.Value
         parsing_function = COMMANDS[cls.CMD]
         cmd = cls.CMD.format(target=dnsname)
-        cont = NmapOrchestrator.execute_command(cmd, parsing_function)
+        try:
+            cont = NmapOrchestrator.execute_command(cmd, parsing_function)
+        except Exception as e:
+            response.addUIMessage(message=str(e), messageType='FatalError')
+            return
         dict_to_entities(cont, response, dns_name=dnsname)

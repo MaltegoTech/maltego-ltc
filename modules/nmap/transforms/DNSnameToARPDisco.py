@@ -24,5 +24,10 @@ class DNSnameToARPDisco(DiscoverableTransform):
         dns_name = request.Value
         parsing_function = COMMANDS[cls.CMD]
         cmd = cls.CMD.format(target=dns_name)
-        cont = NmapOrchestrator.execute_command(cmd, parsing_function)
+        try:
+            cont = NmapOrchestrator.execute_command(cmd, parsing_function)
+        except Exception as e:
+            response.addUIMessage(message=str(e), messageType='FatalError')
+            return
+            return
         dict_to_entities(cont, response, dns_name=dns_name)

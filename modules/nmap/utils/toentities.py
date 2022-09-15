@@ -101,5 +101,4 @@ def parse_properties(properties: dict, ip: str, response: MaltegoTransform, dns_
     if osmatch:
         ent.addProperty("Operating_system", "Operating_system", "loose", osmatch[0]["name"])
         ent.addProperty("OS_accuracy", "OS_accuracy", "loose", osmatch[0]["accuracy"])
-        # TODO add a Transform to extract the CPE
         ent.addProperty("CPE_OS", "CPE_OS", "loose", osmatch[0]["cpe"])

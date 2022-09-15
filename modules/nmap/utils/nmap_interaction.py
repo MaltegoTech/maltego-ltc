@@ -135,7 +135,6 @@ class NmapOrchestrator:
 
         """
         # TODO handle exception that could arise
-        # TODO handle exception for lack of ROOT
         nmap_path = cls.get_nmap_path()
         cmd = SUDO + nmap_path + " " + cmd + " -oX -"
         fp = cls._get_cached_file_path(cmd)
@@ -171,12 +170,12 @@ if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG)
     from modules.nmap.utils.commands import COMMANDS
 
-    CMD = "{target} -sU -A"
-    command = CMD.format(target="192.168.1.39")
+    CMD = "{target} -sL"
+    command = CMD.format(target="192.168.1.0/24")
     # command = CMD.format(target="scanme.nmap.org")
     parsing_func = COMMANDS[CMD]
 
-    command += " -A"
+    # command += " -A"
 
     ee = NmapOrchestrator.execute_command(cmd=command, parsing_function=parsing_func)
 

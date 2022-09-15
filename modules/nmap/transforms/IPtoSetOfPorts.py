@@ -28,5 +28,9 @@ class IPtoSetOfPorts(DiscoverableTransform):
         formatted_ports = NmapOrchestrator.get_formatted_ports()
 
         cmd = cls.CMD.format(target=ipadd, ports=formatted_ports)
-        cont = NmapOrchestrator.execute_command(cmd, parsing_function)
+        try:
+            cont = NmapOrchestrator.execute_command(cmd, parsing_function)
+        except Exception as e:
+            response.addUIMessage(message=str(e), messageType='FatalError')
+            return
         dict_to_entities(cont, response)
