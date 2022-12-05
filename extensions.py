@@ -12,6 +12,7 @@ registry.include_registry("iocparser", iocparser_registry)
 registry.include_registry("cms_seek", cms_seek_registry)
 registry.include_registry("dnstwist", dnstwist_registry)
 registry.include_registry("holehe", holehe_registry)
+registry.include_registry("PunyCode", punycode_registry)
 
 
 # The rest of these attributes are optional
