@@ -13,6 +13,14 @@ virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
+If you got an Error regarding SSL on a Mac using brew you may have to add these FLAGS for devices using Apple Silicon you may try this (as default homebrew bin directory differs)
+
+```zsh
+  export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
+  export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
+```
+
+
 
 5. Update the path in the Config file
 
