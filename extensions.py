@@ -14,7 +14,7 @@ registry.include_registry("iocparser", iocparser_registry)
 registry.include_registry("cms_seek", cms_seek_registry)
 registry.include_registry("dnstwist", dnstwist_registry)
 registry.include_registry("holehe", holehe_registry)
-registry.include_registry("nmap", nmap_registry)
+
 
 
 
