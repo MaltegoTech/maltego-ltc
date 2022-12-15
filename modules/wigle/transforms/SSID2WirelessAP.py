@@ -1,9 +1,9 @@
-from extensions import registry
+from modules.wigle.extensions import wigle_registry
 from maltego_trx.maltego import MaltegoMsg, MaltegoTransform
 from maltego_trx.transform import DiscoverableTransform
 from pygle import network
 
-@registry.register_transform(display_name="to Wireless AP [wigle]", input_entity="maltego.wirelessSSID",
+@wigle_registry.register_transform(display_name="to Wireless AP [wigle]", input_entity="maltego.wirelessSSID",
                              description='Returns access points matching an specific SSID.',
                              output_entities=["maltego.wirelessAP"])
 class SSID2WirelessAP(DiscoverableTransform):
