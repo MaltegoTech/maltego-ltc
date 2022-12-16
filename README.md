@@ -30,6 +30,11 @@ python3 project.py list
 
 6. Import the Maltego Config file `local.mtz` into Maltego.
 
+# Bring your own Transforms to maltego-ltc
+
+Before you start writing transforms create your own "Module" to do so use the python script `create_module.py`. It 
+will create a sub-dir with the necessary files in the "modules"-folder. 
+
 # Info
 To recreate the `local.mtz` just run `python3 project.py list`
 
