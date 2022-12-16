@@ -5,7 +5,7 @@ import ipaddress
 
 import validators
 
-from extensions import registry
+from modules.maltemate.extensions import maltemate_registry
 from maltego_trx.entities import IPAddress, Phrase, Domain, URL, Hash
 from maltego_trx.maltego import UIM_TYPES, MaltegoMsg, MaltegoTransform
 from maltego_trx.transform import DiscoverableTransform
