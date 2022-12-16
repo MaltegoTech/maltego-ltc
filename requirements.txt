@@ -5,3 +5,5 @@ cachetools~=5.2.0
 -r modules/IOCparser/requirements.txt
 -r modules/holehe/requirements.txt
 -r modules/wigle/requirements.txt
+-r modules/maltemate/requirements.txt
+-r modules/nmap/requirements.txt
