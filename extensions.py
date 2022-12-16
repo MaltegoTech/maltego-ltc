@@ -4,6 +4,7 @@ from modules.cisa.extensions import cisa_registry
 from modules.cms_seek.extensions import cms_seek_registry
 from modules.dnstwist.extensions import dnstwist_registry
 from modules.holehe.extensions import holehe_registry
+from modules.punycode.extensions import punycode_registry
 from modules.maltemate.extensions import maltemate_registry
 from modules.wigle.extensions import wigle_registry
 from modules.nmap.extensions import nmap_registry
