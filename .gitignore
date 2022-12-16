@@ -6,3 +6,4 @@ transforms.csv
 /modules/nmap/transforms/GreetPerson.py
 /modules/nmap/cache/*
 /modules/nmap/graphs_dev/
+__pycache__/
