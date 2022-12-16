@@ -10,7 +10,7 @@ from modules.holehe.extensions import holehe_registry, holehe_set
 @holehe_registry.register_transform(display_name="To Details [HOLEHE]", input_entity="maltego.EmailAddress",
                                     description='Returns accounts associated with an email address.',
                                     settings=[],
-                                    output_entities=["maltego.Unknown"],
+                                    output_entities=["maltego.Website"],
                                     transform_set=holehe_set)
 class ToDetailsHOLEHE(DiscoverableTransform):
 

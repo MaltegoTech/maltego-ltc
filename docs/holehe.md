@@ -20,7 +20,7 @@ Extracts the alias from an Email Address
 
 Returns accounts associated with an email address.
 
-`maltego.EmailAddress --> maltego.Unknown`
+`maltego.EmailAddress --> maltego.Website`
 
 ---
 
