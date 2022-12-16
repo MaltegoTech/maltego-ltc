@@ -16,7 +16,7 @@ RE_MD5 = re.compile(r"[A-Fa-f0-9]{32}")
 RE_SHA256 = re.compile(r"[A-Fa-f0-9]{64}")
 
 
-@registry.register_transform(display_name="To Refanged Domain/URL/IP", input_entity=Phrase,
+@maltemate_registry.register_transform(display_name="To Refanged Domain/URL/IP", input_entity=Phrase,
                              description='Refangs the given Domain / URL / IP (ex: hxxps://google[.]com -> https://google.com)',
                              output_entities=[IPAddress, Domain, URL, Hash])
 class PhraseDomainUrlIPToRefangedVersion(DiscoverableTransform):
