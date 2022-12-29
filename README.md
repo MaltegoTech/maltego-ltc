@@ -56,7 +56,7 @@ will create a sub-dir with the necessary files in the "modules"-folder.
 When done coding create a pull-request.
 
 
-# Info
+# Update or create of MTZ files
 To recreate the `local.mtz` files, just run `python3 project.py list`
 
 # Modules
