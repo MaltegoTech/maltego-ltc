@@ -5,7 +5,7 @@ from extensions import registry
 from modules.holehe.extensions import holehe_registry, holehe_set
 
 
-@holehe_registry.register_transform(display_name="Email to Alias [MST]", input_entity="maltego.EmailAddress",
+@holehe_registry.register_transform(display_name="Email to Alias [HOLEHE]", input_entity="maltego.EmailAddress",
                              description='Extracts the alias from an Email Address',
                              settings=[],
                              output_entities=["maltego.Alias"],

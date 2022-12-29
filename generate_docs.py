@@ -1,3 +1,4 @@
+#!python
 from maltego_trx.decorator_registry import TransformMeta
 
 from project import registry as meta_registry
