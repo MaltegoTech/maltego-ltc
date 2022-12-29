@@ -23,7 +23,7 @@ Easy Helper Transform to extract the alias from an eMail Address in front of the
 Returns accounts associated with an email address.
 More info about HOLEHE (https://github.com/megadose/holehe)
 
-!mt-hohele1.png
+![Example](./assets/mt-hohele.png)
 
 
 
