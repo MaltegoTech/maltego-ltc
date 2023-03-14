@@ -26,9 +26,12 @@ def dict_to_entities(cont: dict, response: MaltegoTransform, dns_name: str = "")
     IP -> IP with info in property
     
     """
-    # remove stats and runtimes sections
-    stats = cont.pop("stats")
-    runtime = cont.pop("runtime")
+    # remove stats, runtimes and task results sections
+    for k in ["stats", "runtime", "task_results"]:
+        try:
+            cont.pop(k)
+        except KeyError:
+            log.warning(f"Failed to remove {k} from the XML results")
 
     if len(cont.keys()) == 0:
         log.warning("Note: Host seems down!")
