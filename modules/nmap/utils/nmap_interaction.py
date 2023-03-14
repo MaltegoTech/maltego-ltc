@@ -41,7 +41,7 @@ class NmapOrchestrator:
         if cls.NMAP_PATH == '':
             cls.NMAP_PATH = nmap3.get_nmap_path()
             if cls.NMAP_PATH == '':
-                raise Exception("Couldn't find nmap path, please install it: https://nmap.org/")
+                raise Exception("Couldn't find nmap path, please install it: https://nmap.org/ or override the executable path in modules/nmap/config.py")
         return cls.NMAP_PATH
 
     @classmethod
@@ -120,6 +120,9 @@ class NmapOrchestrator:
         cmd = cmd[1:-2]
         # no need to include the creation date, we can get that from the OS
         filename = base64.b64encode(cmd.encode('ascii')).decode("ascii") + ".xml"
+        # making sure the cache dir exist
+        os.makedirs(CACHE_DIR, exist_ok=True)
+
         return os.path.join(CACHE_DIR, filename)
 
     @classmethod
