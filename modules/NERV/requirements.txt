@@ -2,3 +2,4 @@ imagehash
 filetype
 bs4
 requests
+selenium
