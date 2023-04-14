@@ -29,13 +29,25 @@ class URLtoImages(DiscoverableTransform):
     @classmethod
     def get_images(cls, page_url):
         img_list = set()
+        netloc = urlparse(page_url).netloc
         soup = Downloader.get_page_source(page_url)
         for elem in soup.findAll("img"):
-            img_list.add(elem.attrs["src"])
+            img_url = elem.attrs["src"]
+            if not img_url:
+                continue
+            else:
+                img_url = urlparse(img_url)
+                if img_url.netloc == "":
+                    img_url = img_url._replace(netloc="github.com")
+                if img_url.scheme == "":
+                    img_url = img_url._replace(scheme="http")
+
+            img_list.add(img_url.geturl())
         return img_list
 
 
 if __name__ == '__main__':
     TEST_URL = "https://www.liberation.fr/international/moyen-orient/ou-en-est-la-revolte-en-iran-un-feu-qui-couve-sous-les-cendres-20230330_Q67IT67AYJG4FMF3N5WD2ATK6E/"
     TEST_URL = "https://therecord.media/3cx-attack-north-korea-lazarus-group"
+    TEST_URL = "https://github.com/MaltegoTech/maltego-ltc/blob/main/docs/nmap.md"
     print(URLtoImages.get_images(TEST_URL))
