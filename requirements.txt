@@ -7,3 +7,4 @@ cachetools~=5.2.0
 -r modules/wigle/requirements.txt
 -r modules/maltemate/requirements.txt
 -r modules/nmap/requirements.txt
+-r modules/Web2Screenshot/requirements.txt
