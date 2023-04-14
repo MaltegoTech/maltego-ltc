@@ -21,7 +21,7 @@ class URLtoImages(DiscoverableTransform):
             try:
                 path_img = urlparse(link).path
                 filename = path_img.rsplit("/", maxsplit=1)[-1]
-                ent = response.addEntity(URL, filename)
+                ent = response.addEntity(Image, filename)
                 ent.addProperty(fieldName="url", displayName="URL", matchingRule="strict", value=link)
             except Exception:
                 response.addUIMessage(message=f"We detected a URL that we thought was an image but coulnd't parse it: {link}", messageType=UIM_PARTIAL)
