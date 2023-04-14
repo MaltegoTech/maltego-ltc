@@ -1,5 +1,6 @@
 import io
 import base64
+import logging
 import hashlib
 import imagehash
 import requests
@@ -13,6 +14,7 @@ import filetype
 
 from ..config import *
 
+log = logging.getLogger(__name__)
 
 def get_url_from_image_entity(request_entity):
     """Get the URL from an Image Entity, pass the request object that is passed to the create_entity method."""
@@ -128,6 +130,6 @@ class ImageHasher:
         extension_imghdr = imghdr_what(fpath)
         extension_filetype = filetype.guess_extension(fpath)
         if extension_filetype != extension_imghdr:
-            print(f"Warning: Filetype for {fpath} is unsuse: Imghdr says {extension_imghdr} and Filetype says "
+            log.warning(f"Filetype for {fpath} is unsure: Imghdr says {extension_imghdr} and Filetype says "
                   f"{extension_filetype}.")
         return extension_filetype
