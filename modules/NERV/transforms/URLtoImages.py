@@ -38,7 +38,7 @@ class URLtoImages(DiscoverableTransform):
             else:
                 img_url = urlparse(img_url)
                 if img_url.netloc == "":
-                    img_url = img_url._replace(netloc="github.com")
+                    img_url = img_url._replace(netloc=netloc)
                 if img_url.scheme == "":
                     img_url = img_url._replace(scheme="http")
 
