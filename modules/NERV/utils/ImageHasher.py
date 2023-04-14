@@ -14,6 +14,17 @@ import filetype
 from ..config import *
 
 
+def get_url_from_image_entity(request_entity):
+    """Get the URL from an Image Entity, pass the request object that is passed to the create_entity method."""
+    if "url" in request_entity.Properties:
+        url_image = request_entity.getProperty("url")
+    elif "fullImage" in request_entity.Properties:
+        url_image = request_entity.getProperty("url")
+    else:
+        raise Exception("URL could not be found in the image")
+    return url_image
+
+
 class ImageHasher:
     # https://github.com/JohannesBuchner/imagehash
     """
