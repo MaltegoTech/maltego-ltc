@@ -19,7 +19,7 @@ def get_url_from_image_entity(request_entity):
     if "url" in request_entity.Properties:
         url_image = request_entity.getProperty("url")
     elif "fullImage" in request_entity.Properties:
-        url_image = request_entity.getProperty("url")
+        url_image = request_entity.getProperty("fullImage")
     else:
         raise Exception("URL could not be found in the image")
     return url_image

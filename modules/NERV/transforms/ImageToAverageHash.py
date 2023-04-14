@@ -16,7 +16,7 @@ class ImageToAverageHash(DiscoverableTransform):
 
     @classmethod
     def create_entities(cls, request: MaltegoMsg, response: MaltegoTransform):
-        url_image = get_url_from_image_entity(response)
+        url_image = get_url_from_image_entity(request)
         pHash = ImageHasher(url_image).get_average_hash()
         ent = response.addEntity(Hash, pHash)
         ent.addProperty(fieldName="type", displayName="Hash Type", value="aHash", matchingRule="strict")

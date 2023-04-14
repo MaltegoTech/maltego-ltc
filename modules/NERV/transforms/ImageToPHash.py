@@ -17,7 +17,7 @@ class ImageToPHash(DiscoverableTransform):
 
     @classmethod
     def create_entities(cls, request: MaltegoMsg, response: MaltegoTransform):
-        url_image = get_url_from_image_entity(response)
+        url_image = get_url_from_image_entity(request)
         pHash = ImageHasher(url_image).get_phash()
         ent = response.addEntity(Hash, pHash)
         ent.addProperty(fieldName="type", displayName="Hash Type", value="pHash", matchingRule="strict")
