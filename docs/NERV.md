@@ -81,7 +81,7 @@ pHash in its mechanism
 
 ## Crop Resistant Hash
 According to this blog https://erdogant.github.io/undouble/pages/html/hash_functions.html#crop-resistant-hash,
-this algorithm is particularly resistant to cropped images.
+this algorithm is particularly resistant to cropped images. (Not implemented yet.)
 
 Original paper: https://ieeexplore.ieee.org/document/6980335
 
@@ -115,3 +115,6 @@ size allows an algorithm to store more detail in its hash, increasing its sensit
 
 
 - **DRIVER_PATH**: The default package used to retrieve page HTML is Selenium. This package uses a real web browser to visit the webpage. This makes the presence of a driver for your browser necessary. Please use this variable to link the path to the Chrome browser we are using. If Selenium is not configured or if there is a problem retrieving the URL with it, we will fall back on requests. To install and configure Selenium, please follow this guide: https://selenium-python.readthedocs.io/installation.html
+
+# Next steps
+- Implement Crop Resistant hash Transforms.

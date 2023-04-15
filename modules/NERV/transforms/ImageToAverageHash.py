@@ -7,7 +7,7 @@ from modules.NERV.extensions import NERV_registry, NERV_set
 from modules.NERV.utils.ImageHasher import ImageHasher, get_url_from_image_entity
 
 
-@NERV_registry.register_transform(display_name="To aHash", input_entity=Image,
+@NERV_registry.register_transform(display_name="To aHash (average)", input_entity=Image,
                                   description="Returns the average Hash of an image (the image will be downloaded if "
                                               "not stored locally).",
                                   output_entities=[Hash],
@@ -19,4 +19,4 @@ class ImageToAverageHash(DiscoverableTransform):
         url_image = get_url_from_image_entity(request)
         pHash = ImageHasher(url_image).get_average_hash()
         ent = response.addEntity(Hash, pHash)
-        ent.addProperty(fieldName="type", displayName="Hash Type", value="aHash", matchingRule="strict")
+        ent.addProperty(fieldName="type", displayName="Hash Type", value="average hash", matchingRule="strict")
