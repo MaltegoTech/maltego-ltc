@@ -8,6 +8,7 @@ from modules.punycode.extensions import punycode_registry
 from modules.maltemate.extensions import maltemate_registry
 from modules.wigle.extensions import wigle_registry
 from modules.nmap.extensions import nmap_registry
+from modules.Web2Screenshot.extensions import web2screenshot_registry
 
 registry = MetaRegistry()
 registry.include_registry("cisa", cisa_registry)
@@ -19,6 +20,7 @@ registry.include_registry("PunyCode", punycode_registry)
 registry.include_registry("maltemate", maltemate_registry)
 registry.include_registry("wigle", wigle_registry)
 registry.include_registry("nmap", nmap_registry)
+registry.include_registry("Web2Screenshot", web2screenshot_registry)
 
 
 # The rest of these attributes are optional
