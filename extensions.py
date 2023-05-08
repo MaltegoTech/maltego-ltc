@@ -9,6 +9,7 @@ from modules.maltemate.extensions import maltemate_registry
 from modules.wigle.extensions import wigle_registry
 from modules.nmap.extensions import nmap_registry
 from modules.Web2Screenshot.extensions import web2screenshot_registry
+from modules.NERV.extensions import NERV_registry
 
 registry = MetaRegistry()
 registry.include_registry("cisa", cisa_registry)
@@ -21,19 +22,6 @@ registry.include_registry("maltemate", maltemate_registry)
 registry.include_registry("wigle", wigle_registry)
 registry.include_registry("nmap", nmap_registry)
 registry.include_registry("Web2Screenshot", web2screenshot_registry)
+registry.include_registry("NERV", NERV_registry)
 
 
-# The rest of these attributes are optional
-
-# metadata
-registry.version = "0.1"
-
-# global settings
-# from maltego_trx.template_dir.settings import api_key_setting
-# registry.global_settings = [api_key_setting]
-
-# transform suffix to indicate datasource
-# registry.display_name_suffix = " [ACME]"
-
-# reference OAuth settings
-# registry.oauth_settings_id = ['github-oauth']
