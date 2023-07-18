@@ -2,6 +2,7 @@ import logging
 import os.path
 import zipfile
 from itertools import chain
+from typing import Iterable
 
 from maltego_trx.decorator_registry import (
     TransformRegistry,
@@ -22,11 +23,13 @@ class MetaRegistry:
         self.registries[namespace] = registry
 
     def write_transforms_config(
-            self, config_path: str = "./transforms.csv", csv_line_limit: int = 100
+            self, config_path: str = "./transforms.csv", csv_line_limit: int = 100,
+            whitelist: Iterable[str] = None
     ):
         csv_lines = chain.from_iterable(
             registry._create_transforms_config()
-            for registry in self.registries.values()
+            for module, registry in self.registries.items()
+            if not whitelist or module in whitelist
         )
 
         export_as_csv(
@@ -34,12 +37,15 @@ class MetaRegistry:
         )
 
     def write_settings_config(
-            self, config_path: str = "./settings.csv", csv_line_limit: int = 100
+            self, config_path: str = "./settings.csv", csv_line_limit: int = 100,
+            whitelist: Iterable[str] = None
     ):
         """Exports the collected settings metadata as a csv-file to config_path"""
 
         csv_lines = chain.from_iterable(
-            registry._create_settings_config() for registry in self.registries.values()
+            registry._create_settings_config() for module, registry in self.registries.items()
+            if not whitelist or module in whitelist
+
         )
 
         export_as_csv(
@@ -53,6 +59,7 @@ class MetaRegistry:
             command: str = "python3",
             params: str = "project.py",
             debug: bool = True,
+            whitelist: Iterable[str] = None
     ):
         transform_meta_names = chain.from_iterable(
             registry.transform_metas.keys() for registry in self.registries.values()
@@ -65,7 +72,8 @@ class MetaRegistry:
 
             mtz_content = chain.from_iterable(
                 registry._create_local_mtz(working_dir, command, params, debug)
-                for registry in self.registries.values()
+                for module, registry in self.registries.items()
+                if not whitelist or module in whitelist
             )
 
             for path, content in mtz_content:
@@ -80,8 +88,12 @@ class MetaRegistry:
             command: str = "python3",
             params: str = "project.py",
             debug: bool = True,
+            whitelist: Iterable[str] = None,
     ):
         for namespace, registry in self.registries.items():
+            if whitelist and namespace not in whitelist:
+                continue
+
             module_path = os.path.join(".", "modules", namespace)
             if not os.path.exists(module_path):
                 logging.error("Please call your registry namespace the same as the module directory to have the mtz "

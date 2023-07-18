@@ -13,11 +13,11 @@ from modules.NERV.extensions import NERV_registry
 
 registry = MetaRegistry()
 registry.include_registry("cisa", cisa_registry)
-registry.include_registry("iocparser", iocparser_registry)
+registry.include_registry("IOCparser", iocparser_registry)
 registry.include_registry("cms_seek", cms_seek_registry)
 registry.include_registry("dnstwist", dnstwist_registry)
 registry.include_registry("holehe", holehe_registry)
-registry.include_registry("PunyCode", punycode_registry)
+registry.include_registry("punycode", punycode_registry)
 registry.include_registry("maltemate", maltemate_registry)
 registry.include_registry("wigle", wigle_registry)
 registry.include_registry("nmap", nmap_registry)

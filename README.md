@@ -1,19 +1,23 @@
 # Install
 
 1. Install Python 3.7 or newer
-2. Clone LTC to a local folder and change into the path 
+2. Clone LTC to a local folder and change into the path
+
 ```
 git clone https://github.com/MaltegoTech/maltego-ltc.git
 cd maltego-ltc
 ```
 
 4. Install dependencies in virtualenv
+
 ```
 virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
-If you got an Error regarding SSL on a Mac using brew you may have to add these FLAGS for devices using Apple Silicon you may try this (as default homebrew bin directory differs)
+
+If you got an Error regarding SSL on a Mac using brew you may have to add these FLAGS for devices using Apple Silicon
+you may try this (as default homebrew bin directory differs)
 
 ```zsh
   export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
@@ -21,42 +25,100 @@ If you got an Error regarding SSL on a Mac using brew you may have to add these 
 ```
 
 
+## Activate modules
 
-5. Update the path in the Config file
+All modules are opt-in. To activate modules, run
+
+```bash
+python3 activate_modules.py
+```
+
+Select the modules you want to use.
+
+```bash
+[?] What modules do you want to activate?: 
+   [X] cisa [by Carlos Fragoso <cf@maltego.com>, Maltego Technologies GmbH]
+   [ ] IOCparser [by Florian Murschetz <fm@maltego.com>, Maltego Technologies GmbH]
+   [ ] cms_seek [by Maltego Technologies GmbH, fhe@maltego.com]
+   [ ] dnstwist [by TURROKS, dw]
+   [ ] holehe [by TURROKS, dw]
+   [ ] PunyCode [by Maltego, fm@maltego.com]
+   [X] maltemate [by Carlos Fragoso <cf@maltego.com>, Maltego Technologies GmbH]
+ > [ ] wigle [by Carlos Fragoso <cf@maltego.com>, Maltego Technologies GmbH]
+   [ ] nmap [by Mathieu Gaucheler, mg@maltego.com]
+   [ ] Web2Screenshot [by Mario Rojas, Mario Rojas (aka Turroks)]
+   [ ] NERV [by Maltego, shibasec@gmail.com]
+```
+
+This will write your activated modules into `config.json`
+
+```json
+{
+  "activated_modules": [
+    "cisa",
+    "maltemate"
+  ]
+}
+```
+
+To build and review your config, run `python3 project.py list`
+
+```bash
+$ python3 project.py list
+
+INFO:root:Importing module modules/maltemate/transforms
+INFO:root:Importing module modules/cisa/transforms
+= Transform Server URLs =
+/run/any2phrase/: Any2Phrase
+/run/phrasedomainurliptorefangedversion/: PhraseDomainUrlIPToRefangedVersion
+/run/cisacheckcve/: CisaCheckCVE
+
+
+= Local Transform Names =
+any2phrase: Any2Phrase
+phrasedomainurliptorefangedversion: PhraseDomainUrlIPToRefangedVersion
+cisacheckcve: CisaCheckCVE
+```
+
+
+## Usage
+
+1. Update the path in the Config file
 
 ```shell
 source venv/bin/activate
 python3 project.py list
 ```
 
-6. Import the Maltego Config file `local.mtz` into Maltego. If you just want to use specific modules, it is 
-possible to just import the module mtz e.g. `holehe.local.mtz` 
+2. Import the Maltego Config file `local.mtz` into Maltego. If you just want to use specific modules, it is
+   possible to just import the module mtz e.g. `holehe.local.mtz`
 
-7. Edit `maltego-ltc/venv/lib/python3.11/site-packages/pygle/config.py` if you want to use wigle insert your API Key 
-there, if not just insert fake info (otherwise you will get an parse error)
+3. Edit `maltego-ltc/venv/lib/python3.11/site-packages/pygle/config.py` if you want to use wigle insert your API Key
+   there, if not just insert fake info (otherwise you will get an parse error)
+
 
 # Update
+
 ```zsh
 source venv/bin/activate
 git pull
 pip install -r requirements.txt
 python3 project.py list
 ```
+
 The just switch to Maltego and import to Module mtz or the ``local.mtz`` to import all transforms from all Modules.
-
-
 
 # Bring your own Transforms to maltego-ltc
 
 Pull the last version of maltego-ltc and create a new branch (`git checkout -b branch_name`)
 
-Before you start writing transforms create your own "Module" to do so use the python script `create_module.py`. It 
-will create a sub-dir with the necessary files in the "modules"-folder. 
+Before you start writing transforms create your own "Module" to do so use the python script `create_module.py`. It
+will create a sub-dir with the necessary files in the "modules"-folder.
 
 When done coding create a pull-request.
 
-
 # Update or create of MTZ files
+
 To recreate the `local.mtz` files, just run `python3 project.py list`
 
 # Modules
@@ -72,9 +134,9 @@ modules
 
 You can optionally specify a `whitelist` or `blacklist` in `project.py`. To disable them set them to `None`
 
-
 ## Create a module
-To create a module 
+
+To create a module
 
 1. use the python script `create_module.py`. The script needs following positional arguments: name author owner.
 
@@ -94,7 +156,8 @@ source venv/bin/activate
 python3 create_module.py my_module me@myself.com "Me Inc."
 ```
 
-2. Edit in the top-level of the `extensions.py` file and add following lines:   
+2. Edit in the top-level of the `extensions.py` file and add following lines:
+
 ```
 from modules.{name}.extensions import {name}_registry
 
