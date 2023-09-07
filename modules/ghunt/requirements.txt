@@ -1,0 +1,2 @@
+ghunt==2.0.3
+geocoder==1.38.1
