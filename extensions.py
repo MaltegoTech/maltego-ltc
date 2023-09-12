@@ -10,6 +10,7 @@ from modules.wigle.extensions import wigle_registry
 from modules.nmap.extensions import nmap_registry
 from modules.Web2Screenshot.extensions import web2screenshot_registry
 from modules.NERV.extensions import NERV_registry
+from modules.ghunt.extensions import ghunt_registry
 
 registry = MetaRegistry()
 registry.include_registry("cisa", cisa_registry)
@@ -23,5 +24,6 @@ registry.include_registry("wigle", wigle_registry)
 registry.include_registry("nmap", nmap_registry)
 registry.include_registry("Web2Screenshot", web2screenshot_registry)
 registry.include_registry("NERV", NERV_registry)
+registry.include_registry("ghunt", ghunt_registry)
 
 
