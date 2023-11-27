@@ -1,2 +1,2 @@
-ghunt==2.0.3
+ghunt==2.0.4
 geocoder==1.38.1
