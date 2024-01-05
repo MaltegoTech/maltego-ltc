@@ -4,6 +4,14 @@ from maltego_trx.decorator_registry import TransformRegistry, TransformSet
 
 class AtopCustomTransformsEntity(TransformRegistry):
 
+    @staticmethod
+    def add_entity_to_zip(zip_to_patch: zipfile, entity_dir: str):
+        for entity_components in os.listdir(entity_dir):
+            for dirpath, dirs, files in os.walk(os.path.join(entity_dir, entity_components)):
+                for f in files:
+                    fn = os.path.join(dirpath, f)
+                    zip_to_patch.write(fn, fn.replace(entity_dir, "").replace(os.path.sep, "/"))
+
     def write_local_mtz(self,
         mtz_path: str = "./local.mtz",
         working_dir: str = ".",
@@ -17,12 +25,13 @@ class AtopCustomTransformsEntity(TransformRegistry):
         if not os.path.exists(entity_dir):
             return False
 
+        ## patch the extension mtz
         with zipfile.ZipFile(mtz_path, "a") as mtz:
-            for entity_components in os.listdir(entity_dir):
-                for dirpath,dirs,files in os.walk(os.path.join(entity_dir, entity_components)):
-                    for f in files:
-                        fn = os.path.join(dirpath, f)
-                        mtz.write(fn, fn.replace(entity_dir,"").replace(os.path.sep,"/"))
+            AtopCustomTransformsEntity.add_entity_to_zip(mtz, entity_dir)
+
+        ## update the global mtz
+        with zipfile.ZipFile("./local.mtz", "a") as mtz:
+            AtopCustomTransformsEntity.add_entity_to_zip(mtz, entity_dir)
 
 
 atop_registry = AtopCustomTransformsEntity(
