@@ -1,0 +1,20 @@
+<MaltegoEntity id="atop.TONaddress" displayName="TON address" displayNamePlural="TON addresses" description="TON address" category="Cryptocurrency" smallIconResource="Cryptocurrency/TONaddress" largeIconResource="Cryptocurrency/TONaddress" allowedRoot="true" conversionOrder="2147483647" visible="true">
+   <Properties value="properties.tonaddress" displayValue="properties.tonaddress">
+      <Groups/>
+      <Fields>
+         <Field name="properties.tonaddress" type="string" nullable="true" hidden="false" readonly="false" description="" displayName="TON address">
+            <SampleValue>-</SampleValue>
+         </Field>
+         <Field name="balance" type="string" nullable="true" hidden="false" readonly="false" description="" displayName="Balance">
+            <SampleValue></SampleValue>
+         </Field>
+         <Field name="nickname" type="string" nullable="true" hidden="false" readonly="false" description="" displayName="Nickname">
+            <SampleValue></SampleValue>
+         </Field>
+      </Fields>
+   </Properties>
+   <Overlays>
+      <Overlay propertyName="balance" position="SW" type="text"/>
+      <Overlay propertyName="nickname" position="N" type="text"/>
+   </Overlays>
+</MaltegoEntity>
