@@ -2,6 +2,9 @@ from dotenv import dotenv_values
 from atop.atop import *
 from maltego_trx.maltego import MaltegoTransform
 
+BASE_DIR = os.path.dirname(__file__)
+CONFIGFILE: str = os.path.join(BASE_DIR,'.env')
+
 class Util():
 
     config = None
@@ -9,7 +12,8 @@ class Util():
 
     def __init__(self):
         try:
-            self.config = dotenv_values(".env")
+
+            self.config = dotenv_values(CONFIGFILE)
         except:
             pass
 

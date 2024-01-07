@@ -7,7 +7,7 @@ from modules.atop.transforms.Util import Util
                                    description="Return the owner of the NFT and his details and related assets",
                                    output_entities=["maltego.Unknown"],
                                    transform_set=atop_set)
-class AtopByNickname(DiscoverableTransform):
+class AtopByUsername(DiscoverableTransform):
     @classmethod
     def create_entities(cls, request: MaltegoMsg, response: MaltegoTransform):
         if not Util.check_format(request.Value):

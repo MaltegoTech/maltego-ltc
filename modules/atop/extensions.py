@@ -40,5 +40,8 @@ atop_registry = AtopCustomTransformsEntity(
     host_url="https://localhost:8080",
     seed_ids=["atop"],
 )
+
 atop_set = TransformSet("atop", "Atop Transforms")
 
+#from modules.atop.settings import api_key_setting
+#atop_registry.global_settings = [api_key_setting]
