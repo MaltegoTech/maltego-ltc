@@ -10,3 +10,6 @@ cachetools~=5.2.0
 -r modules/Web2Screenshot/requirements.txt
 -r modules/NERV/requirements.txt
 -r modules/ghunt/requirements.txt
+-r modules/atop/requirements.txt
+
+

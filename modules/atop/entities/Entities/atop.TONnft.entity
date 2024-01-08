@@ -1,0 +1,19 @@
+<MaltegoEntity id="atop.TONnft" displayName="TON Nft" displayNamePlural="TON Nfts" description="TON Nft" category="Cryptocurrency" smallIconResource="Custom/ton_nft" largeIconResource="Custom/ton_nft" allowedRoot="true" conversionOrder="2147483647" visible="true">
+   <Properties value="properties.tonnft" displayValue="properties.tonnft">
+      <Groups/>
+      <Fields>
+         <Field name="properties.tonnft" type="string" nullable="true" hidden="false" readonly="false" description="" displayName="TON Nft">
+            <SampleValue>-</SampleValue>
+         </Field>
+         <Field name="address" type="string" nullable="true" hidden="false" readonly="false" description="" displayName="Address">
+            <SampleValue></SampleValue>
+         </Field>
+         <Field name="image" type="string" nullable="true" hidden="false" readonly="false" description="" displayName="Image">
+            <SampleValue></SampleValue>
+         </Field>
+      </Fields>
+   </Properties>
+   <Overlays>
+      <Overlay propertyName="address" position="N" type="text"/>
+   </Overlays>
+</MaltegoEntity>

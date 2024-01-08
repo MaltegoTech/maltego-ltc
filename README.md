@@ -1,6 +1,6 @@
 # Install
 
-1. Install Python 3.7 or newer
+1. Install Python 3.10 or newer
 2. Clone LTC to a local folder and change into the path 
 ```
 git clone https://github.com/MaltegoTech/maltego-ltc.git

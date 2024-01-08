@@ -1,0 +1,16 @@
+<MaltegoEntity id="atop.TONtelephonenumber" displayName="TON telephone number" displayNamePlural="TON telephone numbers" description="TON telephone number" category="Cryptocurrency" smallIconResource="Custom/ton_number" largeIconResource="Custom/ton_number" allowedRoot="true" conversionOrder="2147483647" visible="true">
+   <Properties value="properties.tontelephonenumber" displayValue="properties.tontelephonenumber">
+      <Groups/>
+      <Fields>
+         <Field name="properties.tontelephonenumber" type="string" nullable="true" hidden="false" readonly="false" description="" displayName="TON telephone number">
+            <SampleValue>-</SampleValue>
+         </Field>
+         <Field name="address" type="string" nullable="true" hidden="false" readonly="false" description="" displayName="Address">
+            <SampleValue></SampleValue>
+         </Field>
+      </Fields>
+   </Properties>
+   <Overlays>
+      <Overlay propertyName="address" position="N" type="text"/>
+   </Overlays>
+</MaltegoEntity>

@@ -1,6 +1,7 @@
 venv
 .idea
 .vscode
+*.env
 *local.mtz
 transforms.csv
 /modules/nmap/transforms/GreetPerson.py
