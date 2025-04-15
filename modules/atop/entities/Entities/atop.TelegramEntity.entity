@@ -1,0 +1,34 @@
+<MaltegoEntity id="atop.TelegramEntity" displayName="Telegram Entity" displayNamePlural="Telegram Entitys" description="Telegram Entity" category="Social Network" smallIconResource="Custom/telegram" largeIconResource="Custom/telegram" allowedRoot="true" conversionOrder="2147483647" visible="true">
+   <BaseEntities>
+      <BaseEntity>maltego.affiliation.Telegram</BaseEntity>
+   </BaseEntities>
+   <Properties displayValue="affiliation.network">
+      <Groups/>
+      <Fields>
+         <Field name="kind" type="string" nullable="true" hidden="false" readonly="false" description="" displayName="Kind">
+            <SampleValue></SampleValue>
+         </Field>
+         <Field name="name" type="string" nullable="true" hidden="false" readonly="false" description="" displayName="Name">
+            <SampleValue></SampleValue>
+         </Field>
+         <Field name="nickname" type="string" nullable="true" hidden="false" readonly="false" description="" displayName="Nickname">
+            <SampleValue></SampleValue>
+         </Field>
+         <Field name="description" type="string" nullable="true" hidden="false" readonly="false" description="" displayName="Description">
+            <SampleValue></SampleValue>
+         </Field>
+         <Field name="affiliates" type="string" nullable="true" hidden="false" readonly="false" description="" displayName="Affiliates">
+            <SampleValue></SampleValue>
+         </Field>
+         <Field name="id" type="string" nullable="true" hidden="false" readonly="false" description="" displayName="ID">
+            <SampleValue></SampleValue>
+         </Field>
+      </Fields>
+   </Properties>
+   <Overlays>
+      <Overlay propertyName="description" position="SW" type="text"/>
+      <Overlay propertyName="name" position="NW" type="text"/>
+      <Overlay propertyName="nickname" position="N" type="text"/>
+      <Overlay propertyName="kind" position="W" type="text"/>
+   </Overlays>
+</MaltegoEntity>

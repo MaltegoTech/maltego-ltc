@@ -1,0 +1,15 @@
+<MaltegoEntity id="atop.TONdomain" displayName="TON domain" displayNamePlural="TON domains" description="TON domain" category="Cryptocurrency" smallIconResource="Custom/ton_dns" largeIconResource="Custom/ton_dns" allowedRoot="true" conversionOrder="2147483647" visible="true">
+   <Properties value="properties.tondomain" displayValue="properties.tondomain">
+      <Fields>
+         <Field name="properties.tondomain" type="string" nullable="true" hidden="false" readonly="false" description="" displayName="TON domain">
+            <SampleValue>-</SampleValue>
+         </Field>
+         <Field name="address" type="string" nullable="true" hidden="false" readonly="false" description="" displayName="Address">
+            <SampleValue></SampleValue>
+         </Field>
+      </Fields>
+   </Properties>
+   <Overlays>
+      <Overlay propertyName="address" position="N" type="text"/>
+   </Overlays>
+</MaltegoEntity>

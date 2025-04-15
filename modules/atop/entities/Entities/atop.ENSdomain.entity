@@ -1,0 +1,13 @@
+<MaltegoEntity id="atop.ENSdomain" displayName="ENS domain" displayNamePlural="ENS domains" description="ENS domain" category="Cryptocurrency" smallIconResource="Technology/ServerDNS" largeIconResource="Technology/ServerDNS" allowedRoot="true" conversionOrder="2147483647" visible="true">
+   <Properties value="properties.ensdomain" displayValue="properties.ensdomain">
+      <Groups/>
+      <Fields>
+         <Field name="properties.ensdomain" type="string" nullable="true" hidden="false" readonly="false" description="" displayName="ENS domain">
+            <SampleValue>-</SampleValue>
+         </Field>
+         <Field name="address" type="string" nullable="true" hidden="false" readonly="false" description="" displayName="Address">
+            <SampleValue></SampleValue>
+         </Field>
+      </Fields>
+   </Properties>
+</MaltegoEntity>
